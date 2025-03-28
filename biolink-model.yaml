@@ -10717,7 +10717,6 @@ classes:
         range: sequence variant
       zygosity:
         range: zygosity
-
     slots:
       - subject
       - predicate

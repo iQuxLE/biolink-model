@@ -10715,10 +10715,14 @@ classes:
     slot_usage:
       object:
         range: sequence variant
+      zygosity:
+        range: zygosity
+
     slots:
       - subject
       - predicate
       - object
+      - zygosity
 
   case to gene association:
     is_a: association
