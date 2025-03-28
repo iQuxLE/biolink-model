@@ -882,14 +882,7 @@ type Case implements SubjectOfInvestigation
     hasAttribute: [Attribute]
   }
 
-interface CaseToEntityAssociationMixin
-  {
-    subject: Case!
-    predicate: PredicateType!
-    object: NamedThing!
-  }
-
-type CaseToPhenotypicFeatureAssociation implements EntityToPhenotypicFeatureAssociationMixin, CaseToEntityAssociationMixin
+type CaseToDiseaseAssociation implements EntityToDiseaseAssociationMixin, CaseToEntityAssociationMixin
   {
     id: String!
     iri: IriType
@@ -897,9 +890,6 @@ type CaseToPhenotypicFeatureAssociation implements EntityToPhenotypicFeatureAsso
     description: NarrativeText
     hasAttribute: [Attribute]
     deprecated: Boolean
-    subject: NamedThing!
-    predicate: PredicateType!
-    object: NamedThing!
     negated: Boolean
     qualifier: String
     qualifiers: [OntologyClass]
@@ -930,6 +920,117 @@ type CaseToPhenotypicFeatureAssociation implements EntityToPhenotypicFeatureAsso
     hasSupportingStudies: [Study]
     type: [String]
     category: [Uriorcurie]
+    subject: NamedThing!
+    predicate: PredicateType!
+    object: Disease!
+    onsetQualifier: Onset
+    frequencyQualifier: FrequencyValue
+    subjectAspectQualifier: String
+    subjectDirectionQualifier: DirectionQualifierEnum
+    objectAspectQualifier: String
+    objectDirectionQualifier: DirectionQualifierEnum
+    qualifiedPredicate: String
+    diseaseContextQualifier: Disease
+  }
+
+interface CaseToEntityAssociationMixin
+  {
+    subject: Case!
+    predicate: PredicateType!
+    object: NamedThing!
+  }
+
+type CaseToGeneAssociation implements EntityToGeneAssociationMixin, CaseToEntityAssociationMixin
+  {
+    id: String!
+    iri: IriType
+    name: LabelType
+    description: NarrativeText
+    hasAttribute: [Attribute]
+    deprecated: Boolean
+    negated: Boolean
+    qualifier: String
+    qualifiers: [OntologyClass]
+    publications: [Publication]
+    hasEvidence: [EvidenceType]
+    knowledgeSource: String
+    primaryKnowledgeSource: String
+    aggregatorKnowledgeSource: [String]
+    knowledgeLevel: KnowledgeLevelEnum!
+    agentType: AgentTypeEnum!
+    timepoint: TimeType
+    originalSubject: String
+    originalPredicate: Uriorcurie
+    originalObject: String
+    subjectCategory: OntologyClass
+    objectCategory: OntologyClass
+    subjectClosure: [String]
+    objectClosure: [String]
+    subjectCategoryClosure: [OntologyClass]
+    objectCategoryClosure: [OntologyClass]
+    subjectNamespace: String
+    objectNamespace: String
+    subjectLabelClosure: [String]
+    objectLabelClosure: [String]
+    retrievalSourceIds: [RetrievalSource]
+    pValue: Float
+    adjustedPValue: Float
+    hasSupportingStudies: [Study]
+    type: [String]
+    category: [Uriorcurie]
+    subject: NamedThing!
+    predicate: PredicateType!
+    object: GeneOrGeneProduct!
+    frequencyQualifier: FrequencyValue
+    subjectAspectQualifier: String
+    subjectDirectionQualifier: DirectionQualifierEnum
+    objectAspectQualifier: String
+    objectDirectionQualifier: DirectionQualifierEnum
+    qualifiedPredicate: String
+  }
+
+type CaseToPhenotypicFeatureAssociation implements EntityToPhenotypicFeatureAssociationMixin, CaseToEntityAssociationMixin
+  {
+    id: String!
+    iri: IriType
+    name: LabelType
+    description: NarrativeText
+    hasAttribute: [Attribute]
+    deprecated: Boolean
+    subject: NamedThing!
+    predicate: PredicateType!
+    object: NamedThing!
+    qualifier: String
+    qualifiers: [OntologyClass]
+    publications: [Publication]
+    hasEvidence: [EvidenceType]
+    knowledgeSource: String
+    primaryKnowledgeSource: String
+    aggregatorKnowledgeSource: [String]
+    knowledgeLevel: KnowledgeLevelEnum!
+    agentType: AgentTypeEnum!
+    timepoint: TimeType
+    originalSubject: String
+    originalPredicate: Uriorcurie
+    originalObject: String
+    subjectCategory: OntologyClass
+    objectCategory: OntologyClass
+    subjectClosure: [String]
+    objectClosure: [String]
+    subjectCategoryClosure: [OntologyClass]
+    objectCategoryClosure: [OntologyClass]
+    subjectNamespace: String
+    objectNamespace: String
+    subjectLabelClosure: [String]
+    objectLabelClosure: [String]
+    retrievalSourceIds: [RetrievalSource]
+    pValue: Float
+    adjustedPValue: Float
+    hasSupportingStudies: [Study]
+    type: [String]
+    category: [Uriorcurie]
+    negated: Boolean
+    onsetQualifier: Onset
     frequencyQualifier: FrequencyValue
     subjectAspectQualifier: String
     subjectDirectionQualifier: DirectionQualifierEnum
@@ -942,6 +1043,55 @@ type CaseToPhenotypicFeatureAssociation implements EntityToPhenotypicFeatureAsso
     hasTotal: Integer
     hasQuotient: Double
     hasPercentage: Double
+  }
+
+type CaseToVariantAssociation implements EntityToVariantAssociationMixin, CaseToEntityAssociationMixin
+  {
+    id: String!
+    iri: IriType
+    name: LabelType
+    description: NarrativeText
+    hasAttribute: [Attribute]
+    deprecated: Boolean
+    negated: Boolean
+    qualifier: String
+    qualifiers: [OntologyClass]
+    publications: [Publication]
+    hasEvidence: [EvidenceType]
+    knowledgeSource: String
+    primaryKnowledgeSource: String
+    aggregatorKnowledgeSource: [String]
+    knowledgeLevel: KnowledgeLevelEnum!
+    agentType: AgentTypeEnum!
+    timepoint: TimeType
+    originalSubject: String
+    originalPredicate: Uriorcurie
+    originalObject: String
+    subjectCategory: OntologyClass
+    objectCategory: OntologyClass
+    subjectClosure: [String]
+    objectClosure: [String]
+    subjectCategoryClosure: [OntologyClass]
+    objectCategoryClosure: [OntologyClass]
+    subjectNamespace: String
+    objectNamespace: String
+    subjectLabelClosure: [String]
+    objectLabelClosure: [String]
+    retrievalSourceIds: [RetrievalSource]
+    pValue: Float
+    adjustedPValue: Float
+    hasSupportingStudies: [Study]
+    type: [String]
+    category: [Uriorcurie]
+    subject: NamedThing!
+    predicate: PredicateType!
+    object: SequenceVariant!
+    frequencyQualifier: FrequencyValue
+    subjectAspectQualifier: String
+    subjectDirectionQualifier: DirectionQualifierEnum
+    objectAspectQualifier: String
+    objectDirectionQualifier: DirectionQualifierEnum
+    qualifiedPredicate: String
   }
 
 type CausalGeneToDiseaseAssociation implements EntityToDiseaseAssociationMixin, GeneToEntityAssociationMixin
@@ -2848,6 +2998,45 @@ interface EntityToFeatureOrDiseaseQualifiersMixin
     diseaseContextQualifier: Disease
   }
 
+interface EntityToFeatureOrGeneQualifiersMixin
+  {
+    frequencyQualifier: FrequencyValue
+    subject: NamedThing!
+    predicate: PredicateType!
+    object: NamedThing!
+    subjectAspectQualifier: String
+    subjectDirectionQualifier: DirectionQualifierEnum
+    objectAspectQualifier: String
+    objectDirectionQualifier: DirectionQualifierEnum
+    qualifiedPredicate: String
+  }
+
+interface EntityToFeatureOrVariantQualifiersMixin
+  {
+    frequencyQualifier: FrequencyValue
+    subject: NamedThing!
+    predicate: PredicateType!
+    object: NamedThing!
+    subjectAspectQualifier: String
+    subjectDirectionQualifier: DirectionQualifierEnum
+    objectAspectQualifier: String
+    objectDirectionQualifier: DirectionQualifierEnum
+    qualifiedPredicate: String
+  }
+
+interface EntityToGeneAssociationMixin
+  {
+    frequencyQualifier: FrequencyValue
+    subject: NamedThing!
+    predicate: PredicateType!
+    subjectAspectQualifier: String
+    subjectDirectionQualifier: DirectionQualifierEnum
+    objectAspectQualifier: String
+    objectDirectionQualifier: DirectionQualifierEnum
+    qualifiedPredicate: String
+    object: Gene!
+  }
+
 interface EntityToOutcomeAssociationMixin
   {
     subject: NamedThing!
@@ -2917,6 +3106,19 @@ type EntityToPhenotypicFeatureAssociationMixin implements FrequencyQuantifier
     hasTotal: Integer
     hasQuotient: Double
     hasPercentage: Double
+  }
+
+interface EntityToVariantAssociationMixin
+  {
+    frequencyQualifier: FrequencyValue
+    subject: NamedThing!
+    predicate: PredicateType!
+    subjectAspectQualifier: String
+    subjectDirectionQualifier: DirectionQualifierEnum
+    objectAspectQualifier: String
+    objectDirectionQualifier: DirectionQualifierEnum
+    qualifiedPredicate: String
+    object: SequenceVariant!
   }
 
 type EnvironmentalExposure implements ExposureEvent

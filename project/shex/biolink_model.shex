@@ -252,14 +252,15 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <Association> ]
        )
     } OR @<AnatomicalEntityToAnatomicalEntityAssociation> OR @<BehaviorToBehavioralFeatureAssociation> OR
-    @<CaseToPhenotypicFeatureAssociation> OR @<CellLineToDiseaseOrPhenotypicFeatureAssociation> OR
-    @<ChemicalAffectsGeneAssociation> OR @<ChemicalEntityAssessesNamedThingAssociation> OR
-    @<ChemicalEntityOrGeneOrGeneProductRegulatesGeneAssociation> OR @<ChemicalGeneInteractionAssociation> OR
-    @<ChemicalOrDrugOrTreatmentToDiseaseOrPhenotypicFeatureAssociation> OR @<ChemicalToChemicalAssociation> OR
-    @<ChemicalToDiseaseOrPhenotypicFeatureAssociation> OR @<ChemicalToPathwayAssociation> OR @<ContributorAssociation> OR
-    @<DiseaseOrPhenotypicFeatureToGeneticInheritanceAssociation> OR @<DiseaseOrPhenotypicFeatureToLocationAssociation> OR
-    @<DiseaseToExposureEventAssociation> OR @<DiseaseToPhenotypicFeatureAssociation> OR @<DrugToGeneAssociation> OR
-    @<EntityToDiseaseAssociation> OR @<EntityToPhenotypicFeatureAssociation> OR @<ExposureEventToOutcomeAssociation> OR
+    @<CaseToDiseaseAssociation> OR @<CaseToGeneAssociation> OR @<CaseToPhenotypicFeatureAssociation> OR @<CaseToVariantAssociation>
+    OR @<CellLineToDiseaseOrPhenotypicFeatureAssociation> OR @<ChemicalAffectsGeneAssociation> OR
+    @<ChemicalEntityAssessesNamedThingAssociation> OR @<ChemicalEntityOrGeneOrGeneProductRegulatesGeneAssociation> OR
+    @<ChemicalGeneInteractionAssociation> OR @<ChemicalOrDrugOrTreatmentToDiseaseOrPhenotypicFeatureAssociation> OR
+    @<ChemicalToChemicalAssociation> OR @<ChemicalToDiseaseOrPhenotypicFeatureAssociation> OR @<ChemicalToPathwayAssociation> OR
+    @<ContributorAssociation> OR @<DiseaseOrPhenotypicFeatureToGeneticInheritanceAssociation> OR
+    @<DiseaseOrPhenotypicFeatureToLocationAssociation> OR @<DiseaseToExposureEventAssociation> OR
+    @<DiseaseToPhenotypicFeatureAssociation> OR @<DrugToGeneAssociation> OR @<EntityToDiseaseAssociation> OR
+    @<EntityToPhenotypicFeatureAssociation> OR @<ExposureEventToOutcomeAssociation> OR
     @<ExposureEventToPhenotypicFeatureAssociation> OR @<FunctionalAssociation> OR @<GeneAffectsChemicalAssociation> OR
     @<GeneRegulatesGeneAssociation> OR @<GeneToDiseaseOrPhenotypicFeatureAssociation> OR @<GeneToExpressionSiteAssociation> OR
     @<GeneToGeneAssociation> OR @<GeneToGeneFamilyAssociation> OR @<GeneToPathwayAssociation> OR @<GenotypeToDiseaseAssociation> OR
@@ -473,12 +474,64 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<CaseToDiseaseAssociation> CLOSED {
+    (  $<CaseToDiseaseAssociation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          &<EntityToDiseaseAssociationMixin_tes> ;
+          rdf:type [ <EntityToDiseaseAssociationMixin> ] ? ;
+          &<CaseToEntityAssociationMixin_tes> ;
+          rdf:type [ <CaseToEntityAssociationMixin> ] ? ;
+          rdf:object @<Disease> ;
+          <onset_qualifier> @<Onset> ? ;
+          <frequency_qualifier> @<FrequencyValue> ? ;
+          <subject_aspect_qualifier> @linkml:String ? ;
+          <subject_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+          <object_aspect_qualifier> @linkml:String ? ;
+          <object_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+          <qualified_predicate> @linkml:String ? ;
+          <disease_context_qualifier> @<Disease> ?
+       ) ;
+       rdf:type [ <CaseToDiseaseAssociation> ]
+    )
+}
+
 <CaseToEntityAssociationMixin> {
     (  $<CaseToEntityAssociationMixin_tes> (  rdf:subject @<Case> ;
           rdf:predicate @<PredicateType> ;
           rdf:object @<NamedThing>
        ) ;
        rdf:type [ <CaseToEntityAssociationMixin> ] ?
+    )
+}
+
+<CaseToGeneAssociation> CLOSED {
+    (  $<CaseToGeneAssociation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          &<EntityToGeneAssociationMixin_tes> ;
+          rdf:type [ <EntityToGeneAssociationMixin> ] ? ;
+          &<CaseToEntityAssociationMixin_tes> ;
+          rdf:type [ <CaseToEntityAssociationMixin> ] ? ;
+          rdf:object @<GeneOrGeneProduct> ;
+          <frequency_qualifier> @<FrequencyValue> ? ;
+          <subject_aspect_qualifier> @linkml:String ? ;
+          <subject_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+          <object_aspect_qualifier> @linkml:String ? ;
+          <object_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+          <qualified_predicate> @linkml:String ?
+       ) ;
+       rdf:type [ <CaseToGeneAssociation> ]
     )
 }
 
@@ -489,6 +542,7 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <EntityToPhenotypicFeatureAssociationMixin> ] ? ;
           &<CaseToEntityAssociationMixin_tes> ;
           rdf:type [ <CaseToEntityAssociationMixin> ] ? ;
+          <onset_qualifier> @<Onset> ? ;
           <frequency_qualifier> @<FrequencyValue> ? ;
           <subject_aspect_qualifier> @linkml:String ? ;
           <subject_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
@@ -509,6 +563,31 @@ linkml:Sparqlpath xsd:string
           <has_percentage> @linkml:Double ?
        ) ;
        rdf:type [ <CaseToPhenotypicFeatureAssociation> ]
+    )
+}
+
+<CaseToVariantAssociation> CLOSED {
+    (  $<CaseToVariantAssociation_tes> (  &<Association_tes> ;
+          rdf:type [ <Association> ] ? ;
+          &<EntityToVariantAssociationMixin_tes> ;
+          rdf:type [ <EntityToVariantAssociationMixin> ] ? ;
+          &<CaseToEntityAssociationMixin_tes> ;
+          rdf:type [ <CaseToEntityAssociationMixin> ] ? ;
+          rdf:object @<SequenceVariant> ;
+          <frequency_qualifier> @<FrequencyValue> ? ;
+          <subject_aspect_qualifier> @linkml:String ? ;
+          <subject_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+          <object_aspect_qualifier> @linkml:String ? ;
+          <object_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+             <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+          <qualified_predicate> @linkml:String ?
+       ) ;
+       rdf:type [ <CaseToVariantAssociation> ]
     )
 }
 
@@ -1637,6 +1716,57 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<EntityToFeatureOrGeneQualifiersMixin>  (
+    {
+       (  $<EntityToFeatureOrGeneQualifiersMixin_tes> (  &<FrequencyQualifierMixin_tes> ;
+             rdf:type [ <FrequencyQualifierMixin> ] ? ;
+             <subject_aspect_qualifier> @linkml:String ? ;
+             <subject_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+             <object_aspect_qualifier> @linkml:String ? ;
+             <object_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+             <qualified_predicate> @linkml:String ?
+          ) ;
+          rdf:type [ <EntityToFeatureOrGeneQualifiersMixin> ] ?
+       )
+    } OR @<EntityToGeneAssociationMixin>
+)
+
+<EntityToFeatureOrVariantQualifiersMixin>  (
+    {
+       (  $<EntityToFeatureOrVariantQualifiersMixin_tes> (  &<FrequencyQualifierMixin_tes> ;
+             rdf:type [ <FrequencyQualifierMixin> ] ? ;
+             <subject_aspect_qualifier> @linkml:String ? ;
+             <subject_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+             <object_aspect_qualifier> @linkml:String ? ;
+             <object_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#upregulated>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#decreased>
+                <https://w3id.org/biolink/vocab/DirectionQualifierEnum#downregulated> ] ? ;
+             <qualified_predicate> @linkml:String ?
+          ) ;
+          rdf:type [ <EntityToFeatureOrVariantQualifiersMixin> ] ?
+       )
+    } OR @<EntityToVariantAssociationMixin>
+)
+
+<EntityToGeneAssociationMixin> {
+    (  $<EntityToGeneAssociationMixin_tes> (  &<EntityToFeatureOrGeneQualifiersMixin_tes> ;
+          rdf:type [ <EntityToFeatureOrGeneQualifiersMixin> ] ? ;
+          rdf:object @<Gene>
+       ) ;
+       rdf:type [ <EntityToGeneAssociationMixin> ] ?
+    )
+}
+
 <EntityToOutcomeAssociationMixin> {
     (  $<EntityToOutcomeAssociationMixin_tes> (  rdf:subject @<NamedThing> ;
           rdf:predicate @<PredicateType> ;
@@ -1680,6 +1810,15 @@ linkml:Sparqlpath xsd:string
           <has_percentage> @linkml:Double ?
        ) ;
        rdf:type [ <EntityToPhenotypicFeatureAssociationMixin> ] ?
+    )
+}
+
+<EntityToVariantAssociationMixin> {
+    (  $<EntityToVariantAssociationMixin_tes> (  &<EntityToFeatureOrVariantQualifiersMixin_tes> ;
+          rdf:type [ <EntityToFeatureOrVariantQualifiersMixin> ] ? ;
+          rdf:object @<SequenceVariant>
+       ) ;
+       rdf:type [ <EntityToVariantAssociationMixin> ] ?
     )
 }
 
@@ -1858,7 +1997,8 @@ linkml:Sparqlpath xsd:string
 }
 
 <FrequencyQualifierMixin>  (
-    @<EntityToFeatureOrDiseaseQualifiersMixin> OR @<FeatureOrDiseaseQualifiersToEntityMixin>
+    @<EntityToFeatureOrDiseaseQualifiersMixin> OR @<EntityToFeatureOrGeneQualifiersMixin> OR
+    @<EntityToFeatureOrVariantQualifiersMixin> OR @<FeatureOrDiseaseQualifiersToEntityMixin>
 )
 
 <FrequencyQualifierMixin_struct> {
