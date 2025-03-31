@@ -9073,12 +9073,6 @@ classes:
       An individual (human) organism that has a patient role in some clinical context.
     mixins:
       - subject of investigation
-    defining_slots:
-      - biological sex
-    slot_usage:
-      biological sex:
-        range: biological sex
-        required: false
 
   cohort:
     is_a: study population
@@ -10704,7 +10698,6 @@ classes:
       - subject
       - predicate
       - object
-      - onset qualifier
 
   case to variant association:
     is_a: association
@@ -10712,17 +10705,10 @@ classes:
       - entity to variant association mixin
       - case to entity association mixin
     description: "Association between a Case and a Genetic Variant"
-    slot_usage:
-      object:
-        range: sequence variant
-      zygosity:
-        range: zygosity
-
     slots:
       - subject
       - predicate
       - object
-      - zygosity
 
   case to gene association:
     is_a: association
@@ -10737,7 +10723,6 @@ classes:
       - subject
       - predicate
       - object
-
 
   behavior to behavioral feature association:
     description: >-
