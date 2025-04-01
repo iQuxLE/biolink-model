@@ -3493,7 +3493,8 @@
       "slot_uri": "https://w3id.org/biolink/vocab/has_zygosity",
       "owner": "has_zygosity",
       "domain_of": [
-        "Genotype"
+        "Genotype",
+        "CaseToVariantAssociation"
       ],
       "range": "Zygosity",
       "@type": "SlotDefinition"
@@ -13135,6 +13136,15 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "sex",
+      "definition_uri": "https://w3id.org/biolink/vocab/sex",
+      "description": "The biological sex of the entity (e.g., male or female) regarding a case description from a phenopacket",
+      "from_schema": "https://w3id.org/biolink/biolink-model",
+      "slot_uri": "https://w3id.org/biolink/vocab/sex",
+      "range": "BiologicalSex",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "attribute_name",
       "definition_uri": "https://w3id.org/biolink/vocab/name",
       "description": "The human-readable 'attribute name' can be set to a string which reflects its context of interpretation, e.g. SEPIO evidence/provenance/confidence annotation or it can default to the name associated with the 'has attribute type' slot ontology term.",
@@ -19341,6 +19351,23 @@
       "usage_slot_name": "object",
       "range": "SequenceVariant",
       "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "case_to_variant_association_has_zygosity",
+      "definition_uri": "https://w3id.org/biolink/vocab/has_zygosity",
+      "from_schema": "https://w3id.org/biolink/biolink-model",
+      "is_a": "has_zygosity",
+      "domain": "CaseToVariantAssociation",
+      "slot_uri": "https://w3id.org/biolink/vocab/has_zygosity",
+      "alias": "has zygosity",
+      "owner": "CaseToVariantAssociation",
+      "domain_of": [
+        "CaseToVariantAssociation"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has zygosity",
+      "range": "Zygosity",
       "@type": "SlotDefinition"
     },
     {
@@ -29389,6 +29416,9 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/biolink/vocab/Case",
+      "defining_slots": [
+        "sex"
+      ],
       "@type": "ClassDefinition"
     },
     {
@@ -33296,6 +33326,7 @@
         "subject",
         "predicate",
         "case_to_variant_association_object",
+        "case_to_variant_association_has_zygosity",
         "frequency_qualifier",
         "subject_aspect_qualifier",
         "subject_direction_qualifier",
@@ -36392,9 +36423,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biolink_model.yaml",
-  "source_file_date": "2025-03-27T19:35:19",
-  "source_file_size": 406743,
-  "generation_date": "2025-03-27T19:35:21",
+  "source_file_date": "2025-04-01T13:15:45",
+  "source_file_size": 407015,
+  "generation_date": "2025-04-01T13:15:47",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/biolink_model.context.jsonld",

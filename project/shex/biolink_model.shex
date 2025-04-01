@@ -574,6 +574,7 @@ linkml:Sparqlpath xsd:string
           &<CaseToEntityAssociationMixin_tes> ;
           rdf:type [ <CaseToEntityAssociationMixin> ] ? ;
           rdf:object @<SequenceVariant> ;
+          <has_zygosity> @<Zygosity> ? ;
           <frequency_qualifier> @<FrequencyValue> ? ;
           <subject_aspect_qualifier> @linkml:String ? ;
           <subject_direction_qualifier> [ <https://w3id.org/biolink/vocab/DirectionQualifierEnum#increased>

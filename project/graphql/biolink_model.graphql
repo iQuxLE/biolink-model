@@ -1086,6 +1086,7 @@ type CaseToVariantAssociation implements EntityToVariantAssociationMixin, CaseTo
     subject: NamedThing!
     predicate: PredicateType!
     object: SequenceVariant!
+    hasZygosity: Zygosity
     frequencyQualifier: FrequencyValue
     subjectAspectQualifier: String
     subjectDirectionQualifier: DirectionQualifierEnum

@@ -1,5 +1,5 @@
 # Auto generated from biolink_model.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-27T19:35:25
+# Generation date: 2025-04-01T13:15:50
 # Schema: Biolink-Model
 #
 # id: https://w3id.org/biolink/biolink-model
@@ -10881,6 +10881,7 @@ class CaseToVariantAssociation(Association):
     subject: Union[str, NamedThingId] = None
     predicate: Union[str, PredicateType] = None
     object: Union[str, SequenceVariantId] = None
+    has_zygosity: Optional[Union[str, ZygosityId]] = None
     frequency_qualifier: Optional[Union[str, FrequencyValue]] = None
     subject_aspect_qualifier: Optional[str] = None
     subject_direction_qualifier: Optional[Union[str, "DirectionQualifierEnum"]] = None
@@ -10908,6 +10909,9 @@ class CaseToVariantAssociation(Association):
             self.MissingRequiredField("object")
         if not isinstance(self.object, SequenceVariantId):
             self.object = SequenceVariantId(self.object)
+
+        if self.has_zygosity is not None and not isinstance(self.has_zygosity, ZygosityId):
+            self.has_zygosity = ZygosityId(self.has_zygosity)
 
         if self.frequency_qualifier is not None and not isinstance(self.frequency_qualifier, FrequencyValue):
             self.frequency_qualifier = FrequencyValue(self.frequency_qualifier)
@@ -15596,6 +15600,9 @@ slots.knowledge_level = Slot(uri=BIOLINK.knowledge_level, name="knowledge level"
 slots.agent_type = Slot(uri=BIOLINK.agent_type, name="agent type", curie=BIOLINK.curie('agent_type'),
                    model_uri=BIOLINK.agent_type, domain=Association, range=Union[str, "AgentTypeEnum"])
 
+slots.sex = Slot(uri=BIOLINK.sex, name="sex", curie=BIOLINK.curie('sex'),
+                   model_uri=BIOLINK.sex, domain=None, range=Optional[Union[str, BiologicalSexId]])
+
 slots.attribute_name = Slot(uri=RDFS.label, name="attribute_name", curie=RDFS.curie('label'),
                    model_uri=BIOLINK.attribute_name, domain=Attribute, range=Optional[Union[str, LabelType]])
 
@@ -16123,6 +16130,9 @@ slots.case_to_disease_association_object = Slot(uri=RDF.object, name="case to di
 
 slots.case_to_variant_association_object = Slot(uri=RDF.object, name="case to variant association_object", curie=RDF.curie('object'),
                    model_uri=BIOLINK.case_to_variant_association_object, domain=CaseToVariantAssociation, range=Union[str, SequenceVariantId])
+
+slots.case_to_variant_association_has_zygosity = Slot(uri=BIOLINK.has_zygosity, name="case to variant association_has zygosity", curie=BIOLINK.curie('has_zygosity'),
+                   model_uri=BIOLINK.case_to_variant_association_has_zygosity, domain=CaseToVariantAssociation, range=Optional[Union[str, ZygosityId]])
 
 slots.case_to_gene_association_object = Slot(uri=RDF.object, name="case to gene association_object", curie=RDF.curie('object'),
                    model_uri=BIOLINK.case_to_gene_association_object, domain=CaseToGeneAssociation, range=Union[dict, GeneOrGeneProduct])

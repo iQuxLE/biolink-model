@@ -732,6 +732,7 @@ message CaseToVariantAssociation
   namedThing subject = 0
   predicateType predicate = 0
   sequenceVariant object = 0
+  zygosity hasZygosity = 0
   frequencyValue frequencyQualifier = 0
   string subjectAspectQualifier = 0
   directionQualifierEnum subjectDirectionQualifier = 0

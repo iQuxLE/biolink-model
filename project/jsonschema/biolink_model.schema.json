@@ -5132,6 +5132,12 @@
                         "null"
                     ]
                 },
+                "has_zygosity": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier for an entity. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
