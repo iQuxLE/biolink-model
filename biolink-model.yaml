@@ -10692,12 +10692,9 @@ classes:
     mixins:
       - entity to phenotypic feature association mixin
       - case to entity association mixin
-    slot_usage:
-      has onset:
-        range: onset
     slots:
       - negated
-      - has onset
+      - onset qualifier
 
   case to disease association:
     is_a: association
@@ -10708,13 +10705,11 @@ classes:
     slot_usage:
       object:
         range: disease
-      has onset:
-        range: onset
     slots:
       - subject
       - predicate
       - object
-      - has onset
+      - onset qualifier
 
   case to variant association:
     is_a: association
