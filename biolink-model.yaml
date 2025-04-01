@@ -6225,13 +6225,6 @@ slots:
     range: biological sex
     required: false
 
-  has onset:
-    description: >
-      Captures the age group or developmental stage when symptom manifestations appear,
-      as defined by the 'onset' class.
-    range: onset
-    required: false
-
 classes:
 
   mapping collection:
