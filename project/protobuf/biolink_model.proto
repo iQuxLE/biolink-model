@@ -533,6 +533,7 @@ message Case
  repeated  organismTaxon inTaxon = 0
   labelType inTaxonLabel = 0
  repeated  attribute hasAttribute = 0
+  string sex = 0
  }
 // An association between a Case (patient) and a Disease
 message CaseToDiseaseAssociation

@@ -9077,7 +9077,7 @@ classes:
       An individual (human) organism that has a patient role in some clinical context.
     mixins:
       - subject of investigation
-    defining_slots:
+    slots:
       - sex
 
   cohort:

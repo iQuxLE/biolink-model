@@ -3876,6 +3876,13 @@
                         "null"
                     ]
                 },
+                "sex": {
+                    "description": "The biological sex of the entity (e.g., male or female) regarding a case description from a phenopacket",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "synonym": {
                     "description": "Alternate human-readable names for a thing",
                     "items": {

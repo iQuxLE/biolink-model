@@ -468,7 +468,8 @@ linkml:Sparqlpath xsd:string
     (  $<Case_tes> (  &<IndividualOrganism_tes> ;
           rdf:type [ <IndividualOrganism> ] ? ;
           &<SubjectOfInvestigation_tes> ;
-          rdf:type [ <SubjectOfInvestigation> ] ?
+          rdf:type [ <SubjectOfInvestigation> ] ? ;
+          <sex> @linkml:String ?
        ) ;
        rdf:type [ <Case> ]
     )

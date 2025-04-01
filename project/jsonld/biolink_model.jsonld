@@ -13141,6 +13141,10 @@
       "description": "The biological sex of the entity (e.g., male or female) regarding a case description from a phenopacket",
       "from_schema": "https://w3id.org/biolink/biolink-model",
       "slot_uri": "https://w3id.org/biolink/vocab/sex",
+      "owner": "Case",
+      "domain_of": [
+        "Case"
+      ],
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -29412,13 +29416,11 @@
         "named_thing_category",
         "in_taxon",
         "in_taxon_label",
-        "organismal_entity_has_attribute"
+        "organismal_entity_has_attribute",
+        "sex"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/biolink/vocab/Case",
-      "defining_slots": [
-        "sex"
-      ],
       "@type": "ClassDefinition"
     },
     {
@@ -36423,9 +36425,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biolink_model.yaml",
-  "source_file_date": "2025-04-01T13:19:56",
-  "source_file_size": 406989,
-  "generation_date": "2025-04-01T13:19:58",
+  "source_file_date": "2025-04-01T13:27:30",
+  "source_file_size": 406980,
+  "generation_date": "2025-04-01T13:27:32",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/biolink_model.context.jsonld",

@@ -1,5 +1,5 @@
 # Auto generated from biolink_model.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-01T13:20:02
+# Generation date: 2025-04-01T13:27:36
 # Schema: Biolink-Model
 #
 # id: https://w3id.org/biolink/biolink-model
@@ -6563,12 +6563,16 @@ class Case(IndividualOrganism):
 
     id: Union[str, CaseId] = None
     category: Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]] = None
+    sex: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, CaseId):
             self.id = CaseId(self.id)
+
+        if self.sex is not None and not isinstance(self.sex, str):
+            self.sex = str(self.sex)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.category):
