@@ -6220,6 +6220,18 @@ slots:
       - value: computational_model
       - value: text_mining_agent
 
+  has biological sex:
+    description: The biological sex of the entity (e.g., male or female)
+    range: biological sex
+    required: false
+
+  has onset:
+    description: >
+      Captures the age group or developmental stage when symptom manifestations appear,
+      as defined by the 'onset' class.
+    range: onset
+    required: false
+
 classes:
 
   mapping collection:
@@ -10687,9 +10699,12 @@ classes:
     mixins:
       - entity to phenotypic feature association mixin
       - case to entity association mixin
+    slot_usage:
+      has onset:
+        range: onset
     slots:
       - negated
-      - onset qualifier
+      - has onset
 
   case to disease association:
     is_a: association
@@ -10700,11 +10715,13 @@ classes:
     slot_usage:
       object:
         range: disease
+      has onset:
+        range: onset
     slots:
       - subject
       - predicate
       - object
-      - onset qualifier
+      - has onset
 
   case to variant association:
     is_a: association
