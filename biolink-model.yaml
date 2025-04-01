@@ -6220,8 +6220,8 @@ slots:
       - value: computational_model
       - value: text_mining_agent
 
-  has biological sex:
-    description: The biological sex of the entity (e.g., male or female)
+  sex:
+    description: The biological sex of the entity (e.g., male or female) regarding a case description from a phenopacket
     range: biological sex
     required: false
 
@@ -9079,11 +9079,7 @@ classes:
     mixins:
       - subject of investigation
     defining_slots:
-      - biological sex
-    slot_usage:
-      biological sex:
-        range: biological sex
-        required: false
+      - sex
 
   cohort:
     is_a: study population
