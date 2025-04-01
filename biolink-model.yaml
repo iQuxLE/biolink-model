@@ -6222,7 +6222,6 @@ slots:
 
   sex:
     description: The biological sex of the entity (e.g., male or female) regarding a case description from a phenopacket
-    range: biological sex
     required: false
 
 classes:
