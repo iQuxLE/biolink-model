@@ -13141,7 +13141,7 @@
       "description": "The biological sex of the entity (e.g., male or female) regarding a case description from a phenopacket",
       "from_schema": "https://w3id.org/biolink/biolink-model",
       "slot_uri": "https://w3id.org/biolink/vocab/sex",
-      "range": "BiologicalSex",
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -36423,9 +36423,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "biolink_model.yaml",
-  "source_file_date": "2025-04-01T13:15:45",
-  "source_file_size": 407015,
-  "generation_date": "2025-04-01T13:15:47",
+  "source_file_date": "2025-04-01T13:19:56",
+  "source_file_size": 406989,
+  "generation_date": "2025-04-01T13:19:58",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/biolink_model.context.jsonld",
